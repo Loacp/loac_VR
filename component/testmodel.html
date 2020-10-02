@@ -1,0 +1,60 @@
+<html>
+
+  <head>
+
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+
+   <script>
+
+    AFRAME.registerComponent("dog1", {
+      init: function () {
+         console.log("  __      _");
+         console.log("o'')}____//");
+         console.log("`_/      )");
+         console.log("(_(_/-(_/");
+      },
+     }
+    );
+
+
+    FRAME.registerComponent("loaded", {
+      init: function () {
+         this.el.addEventListener("model-loaded" , ( )=> {
+           console.log(">>>modèle chargé"+this.el.id);
+         });
+         this.el.addEventListener("model-error" , ( )=> {
+           console.log(">>>erreur de chargement du model"+this.el.id);
+         });
+      },
+     }
+    );
+
+   </script>
+
+  </head>
+
+  <body>
+    <a-scene background="color: skyblue">
+
+			<a-assets>
+				<a-asset-item id="marion" src="../models/pasMarion.glb"></a-asset-item>
+
+			</a-assets>
+
+			<a-entity
+						scale="0.3 0.3 0.3"
+						position="0 0 -8"
+						rotation="90 0 90"
+						loaded
+            gltf-model="#marion"
+						animation-mixer="clip: pas-04-f; duration: 5; loop: twice;">
+
+			 </a-entity>
+			 <a-entity id="camera" position="0 3 0" camera look-controls></a-entity>
+			   <a-light type="point" intensity="2" position="2 4 4"></a-light>
+    	</a-scene>
+
+  </body>
+
+</html>
