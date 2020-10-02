@@ -4,6 +4,7 @@
 
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 
    <script>
 
@@ -18,13 +19,31 @@
     );
 
 
-    FRAME.registerComponent("loaded", {
+    AFRAME.registerComponent("loaded", {
       init: function () {
          this.el.addEventListener("model-loaded" , ( )=> {
-           console.log(">>>modèle chargé"+this.el.id);
+           console.log(">>>> modèle chargé"+this.el.id);
          });
          this.el.addEventListener("model-error" , ( )=> {
-           console.log(">>>erreur de chargement du model"+this.el.id);
+           console.log(">>>> erreur de chargement du model");
+         });
+      },
+     }
+    );
+
+    AFRAME.registerComponent("finished", {
+      init: function () {
+         this.el.addEventListener("animation-finished" , ( )=> {
+           console.log(">>>> animation terminée");
+         });
+      },
+     }
+    );
+
+    AFRAME.registerComponent("loop", {
+      init: function () {
+         this.el.addEventListener("animation-loop" , ( )=> {
+           console.log(">>>> animation bouclée");
          });
       },
      }
@@ -35,24 +54,32 @@
   </head>
 
   <body>
-    <a-scene background="color: skyblue">
+    <a-scene>
 
 			<a-assets>
 				<a-asset-item id="marion" src="../models/pasMarion.glb"></a-asset-item>
 
 			</a-assets>
 
+      <a-entity light="type: ambient; color: #CCC; intensity: 0.5"></a-entity>
+      <a-entity light="type: directional; castShadow:true; color: #fff; intensity: 0.5" position="-1 2 1"></a-entity>
+      <a-entity environment="preset: forest; dressingAmount: 200" shadow="receive: true"></a-entity>
+
 			<a-entity
-						scale="0.3 0.3 0.3"
-						position="0 0 -8"
+            dog1
+            finished
+            loop
+						scale="1 1 1"
+						position="0 0 -3"
 						rotation="90 0 90"
 						loaded
             gltf-model="#marion"
-						animation-mixer="clip: pas-04-f; duration: 5; loop: twice;">
+            shadow="cast:true"
+            shadow="receive: false"
+						animation-mixer="clip: pas-04-f; duration: 5; repetitions : 3; clampWhenFinished : true;">
 
 			 </a-entity>
-			 <a-entity id="camera" position="0 3 0" camera look-controls></a-entity>
-			   <a-light type="point" intensity="2" position="2 4 4"></a-light>
+			 <a-entity id="camera" position="0 1.5 0" camera look-controls></a-entity>
     	</a-scene>
 
   </body>
