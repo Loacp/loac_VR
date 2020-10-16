@@ -12,7 +12,19 @@ AFRAME.registerComponent('switch', {
 
     el.addEventListener('animation-finished', () => {
 
-      change = getRandomInt(1,5)
+      save = change;
+
+      change = getRandomInt(1,5);
+
+      while (change == save) {
+
+        change = getRandomInt(1,5);
+
+      }
+
+
+
+      console.log(change);
 
 
       switch(change)
