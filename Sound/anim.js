@@ -1,10 +1,11 @@
 AFRAME.registerComponent('switch', {
   init: function () {
-    var i=1
-    var j=0
+    var i=1;
+    var j=0;
+    var k=0;
     var el = this.el;
     var change = 0;
-    var vitesse = 0.2
+    var vitesse = 0.2;
     var save = 0;
 
     function getRandomInt(min, max) {
@@ -17,7 +18,7 @@ AFRAME.registerComponent('switch', {
 
       if (i<5) {
 
-        el.setAttribute("animation-mixer" , "repetitions : 2");
+        el.setAttribute("animation-mixer" , "repetitions : 1");
 
         i++
         switch(i)
@@ -63,6 +64,13 @@ AFRAME.registerComponent('switch', {
 
       save = change;
 
+      if (k<1){
+
+        change = getRandomInt(1,4);
+        k=1;
+
+      } else{
+
       change = getRandomInt(1,5);
 
       while (change == save) {
@@ -70,6 +78,8 @@ AFRAME.registerComponent('switch', {
         change = getRandomInt(1,5);
 
       }
+    }
+
 
 
 
@@ -93,7 +103,6 @@ AFRAME.registerComponent('switch', {
 
 
       };
-
     }
 
   }
