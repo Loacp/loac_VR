@@ -18,22 +18,22 @@ AFRAME.registerComponent('switch', {
 
       if (i<5) {
 
-        el.setAttribute("animation-mixer" , "repetitions : 1");
+        el.setAttribute("animation-mixer" , "repetitions : 2");
 
         i++
         switch(i)
         {
-          case 1: el.setAttribute("animation-mixer" , "clip: pas-01-d");
+          case 1: el.setAttribute("animation-mixer" , "clip: pas_01");
           break;
-          case 2: el.setAttribute("animation-mixer" , "clip: pas-02-f");
+          case 2: el.setAttribute("animation-mixer" , "clip: pas_02");
           break;
-          case 3: el.setAttribute("animation-mixer" , "clip: pas-03-f");
+          case 3: el.setAttribute("animation-mixer" , "clip: pas_03");
           break;
-          case 4: el.setAttribute("animation-mixer" , "clip: pas-04-f");
+          case 4: el.setAttribute("animation-mixer" , "clip: pas_04");
           break;
-          case 5: el.setAttribute("animation-mixer" , "clip: pas-05-f");
+          case 5: el.setAttribute("animation-mixer" , "clip: pas_05");
           break;
-          default : el.setAttribute("animation-mixer" , "clip: pas-01-d");
+          default : el.setAttribute("animation-mixer" , "clip: pas_01");
           break;
         };
 
@@ -46,17 +46,17 @@ AFRAME.registerComponent('switch', {
           j++
           switch(j)
           {
-            case 1: el.setAttribute("animation-mixer" , "clip: pas-01-d");
+            case 1: el.setAttribute("animation-mixer" , "clip: pas_01");
             break;
-            case 2: el.setAttribute("animation-mixer" , "clip: pas-02-f");
+            case 2: el.setAttribute("animation-mixer" , "clip: pas_02");
             break;
-            case 3: el.setAttribute("animation-mixer" , "clip: pas-03-f");
+            case 3: el.setAttribute("animation-mixer" , "clip: pas_03");
             break;
-            case 4: el.setAttribute("animation-mixer" , "clip: pas-04-f");
+            case 4: el.setAttribute("animation-mixer" , "clip: pas_04");
             break;
-            case 5: el.setAttribute("animation-mixer" , "clip: pas-05-f");
+            case 5: el.setAttribute("animation-mixer" , "clip: pas_05");
             break;
-            default : el.setAttribute("animation-mixer" , "clip: pas-01-d");
+            default : el.setAttribute("animation-mixer" , "clip: pas_01");
             break;
           };
 
@@ -88,17 +88,17 @@ AFRAME.registerComponent('switch', {
 
       switch(change)
       {
-        case 1: el.setAttribute("animation-mixer" , "clip: pas-01-d");
+        case 1: el.setAttribute("animation-mixer" , "clip: pas_01");
         break;
-        case 2: el.setAttribute("animation-mixer" , "clip: pas-02-f");
+        case 2: el.setAttribute("animation-mixer" , "clip: pas_02");
         break;
-        case 3: el.setAttribute("animation-mixer" , "clip: pas-03-f");
+        case 3: el.setAttribute("animation-mixer" , "clip: pas_03");
         break;
-        case 4: el.setAttribute("animation-mixer" , "clip: pas-04-f");
+        case 4: el.setAttribute("animation-mixer" , "clip: pas_04");
         break;
-        case 5: el.setAttribute("animation-mixer" , "clip: pas-05-f");
+        case 5: el.setAttribute("animation-mixer" , "clip: pas_05");
         break;
-        default : el.setAttribute("animation-mixer" , "clip: pas-01-d");
+        default : el.setAttribute("animation-mixer" , "clip: pas_01");
         break;
 
 
