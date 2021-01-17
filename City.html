@@ -161,12 +161,12 @@
 				<!-- <a-asset-item id="glbjasmine" src="./assets/models/jasmine_louane.glb"></a-asset-item> -->
 
                 <audio id="zorba" src="./assets/audio/zorba.mp3" preload="auto" loop="false"></audio>
-                <img id="img360" crossorigin="anonymous" src="./assets/img/city.jpg" />
+                <img id="img360" crossorigin="anonymous" src="./assets/img/city2.jpg" />
             </a-assets>
 
             <!-- ECLAIRAGES -->
-            <a-entity light="type: ambient; color: #CCC; intensity: 0.5"></a-entity>
-            <a-entity light="type: directional; castShadow:true; color: #fff; intensity: 0.5" position="-1 2 1"></a-entity>
+            <a-entity light="type: ambient; color: #CCC; intensity: 3"></a-entity>
+            <a-entity light="type: directional; castShadow:true; color: #fff; intensity: 0.5" position="-7 5 -6"></a-entity>
 
             <!-- MODELES 3D -->
             <a-entity  id ="alizee" gltf-model="#glbAlizee"
@@ -226,11 +226,11 @@
             </a-entity>
 
             <!-- ENVIRONNEMENTS (ici photo 360)-->
-            <a-sky src="#img360" rotation="0 0 0"></a-sky>
+            <a-sky src="#img360" rotation="0 -95 0"></a-sky>
             <a-plane position="0 0 -4" rotation="-90 0 0"
-                     width="30" height="10" color="#CCCCCC"
+                     width="40" height="20" color="#CCCCCC"
                      shadow="receive: true"
-                     shadow-material="opacite: 0.3">
+                     shadow-material="opacite: 0.1">
             </a-plane>
 
 
