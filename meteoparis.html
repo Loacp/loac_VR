@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Météo Qlé</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="robots" content="index,follow" />
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body>
+	<h1>
+	<hr/>
+	<font color="blue">
+	<center>
+	Données météo à Quimperlé - &copy; Patrice WITTE ,Via API OpenWeather
+	</center>
+	</font>
+	<hr/>
+	</h1>
+	<h4>
+	<?php
+		$url = "http://api.openweathermap.org/data/2.5/weather?q=paris&appid=0530b1ebb980128dffbae9d88f99a5b6";
+
+		$contents = file_get_contents($url);
+		$clima=json_decode($contents);
+
+		setlocale(LC_TIME, 'french.UTF-8', 'fr_FR.UTF-8');
+		$date_r = strftime('%A %d %B %Y, %H:%M');
+
+		$temp_max=$clima->main->temp_max;
+		$temp_min=$clima->main->temp_min;
+		$temp=$clima->main->temp;
+		$pression=$clima->main->pressure;
+		$vitesse_vent=$clima->wind->speed;
+		$direction=$clima->wind->deg;
+		$vitesse_vent=$vitesse_vent*3600/1000;
+		$humidite=$clima->main->humidity;
+		$icon=$clima->weather[0]->icon.".png";
+		$today = date("F j, Y, g:i a");
+		$cityname = $clima->name;
+
+		//Affichage lignes d' entête
+			echo "<table border='1' table width='400' align='center'>
+			<tr>
+
+			</tr>";
+		//Affichage données
+			echo "<tr>";
+				echo "<td> <p align='center'>" . "Date relevé"."</td>";
+				echo "<td> <p align='center'>" . $date_r."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td> <p align='center'>" . "T max ". "&deg;C"."</td>";
+				echo "<td> <p align='center'>" . $temp_max."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td> <p align='center'>" . "T min ". "&deg;C"."</td>";
+				echo "<td> <p align='center'>" . $temp_min. "</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td> <p align='center'>" . "T actuelle ". "&deg;C"."</td>";
+				echo "<td> <p align='center'>" . $temp. "</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td> <p align='center'>" . "Pression hpa". "</td>";
+				echo "<td> <p align='center'>" . $pression. "</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td> <p align='center'>" . "Vitesse vent Km/h   ". "</td>";
+				echo "<td> <p align='center'>" . $vitesse_vent. "</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td> <p align='center'>" . "Direction vent ° ". "</td>";
+				echo "<td> <p align='center'>" . $direction. "</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td> <p align='center'>" . "Humidité %  ". "</td>";
+				echo "<td> <p align='center'>" . $humidite. "</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td> <p align='center'>" . "Ciel". "</td>";
+				echo "<td> <p align='center'>" . "<img src='http://openweathermap.org/img/w/" . $icon ."'/ >". "</td>";
+			echo "</tr>";
+
+		echo("<br>");
+
+		?>
+	</h4>
+<img src="rosee.png" alt="?" border="0" align="left" width="500" height="500" />
+</body>
+</html>

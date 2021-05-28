@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
@@ -27,25 +26,34 @@
 
   <body style='margin : 0px; overflow: hidden;'>
 
-		<a-scene background="color: skyblue">
+		<a-scene renderer="antialias: true;
+                   colorManagement: true;
+                   sortObjects: true;
+                   physicallyCorrectLights: true;
+                   maxCanvasWidth: 1920;
+                   maxCanvasHeight: 1920;">
 
 			<a-assets>
-				<a-asset-item id="marion" src="./models/pasMarion.glb"></a-asset-item>
+				<a-asset-item id="rock" src="./models/test.glb"></a-asset-item>
 
 			</a-assets>
 
 			<a-entity
 						scale="1 1 1"
-						position="0 0 -2"
-						rotation="90 0 90"
+						position="0 -0.1 -1"
+						rotation="0 -90 0"
 						loaded
-            gltf-model="#marion"
-						animation-mixer="clip: pas-02-f; timeScale: 2">
+            gltf-model="#rock">
 
 			 </a-entity>
-			 <a-entity id="camera" position="0 1.7 0" camera look-controls></a-entity>
-		   <a-sky color="grey"></a-sky>
-			   <a-light type="point" intensity="2" position="2 4 4"></a-light>
+			 <a-entity id="camera" position="0 0 0"
+                             camera look-controls></a-entity>
+		   <a-sky color="#030A24"></a-sky>
+			   <a-light type="point" intensity="100" color="#3498db" distance="3" position="1 2 -0.8"></a-light>
+         <a-light type="point" intensity="10" color="red" distance="3" position="-1 0.2 -1"></a-light>
+				 <a-light type="point" intensity="5" color="orange" distance="3" position="0 1 0"></a-light>
+				 <a-entity light="type: ambient; color: #CBB"></a-entity>
+
     	</a-scene>
 
   </body>
