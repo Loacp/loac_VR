@@ -21,8 +21,22 @@
 	              });
 	            }
 	      	});
-	    </script>
 
+          AFRAME.registerComponent("finished", {
+            init: function () {
+               this.el.addEventListener("animation-finished" , ( )=> {
+                 console.log(">>>> animation terminée");
+               });
+            },
+           }
+          );
+
+
+
+
+
+
+	    </script>
   </head>
 
   <body style='margin : 0px; overflow: hidden;'>
@@ -30,7 +44,9 @@
 		<a-scene renderer="antialias: true;
                    colorManagement: true;
                    sortObjects: true;
-                   physicallyCorrectLights: true;">
+                   physicallyCorrectLights: true;
+                   maxCanvasWidth: 1920;
+                   maxCanvasHeight: 1920;">
 
 			<a-assets>
 				<a-asset-item id="rock" src="./models/test.glb"></a-asset-item>
@@ -44,34 +60,33 @@
 						shadow="cast:true"
             shadow="receive: true"
 						loaded
-            gltf-model="#rock"
-						>
+            gltf-model="#rock">
+      </a-entity>
 
-			 </a-entity>
 
-			 <a-animation attribute="scale"
-			 dur="1000"
-			 from= "1 1 1"
-			 to="2 2 2"
-			 direction='alternate-reverse'
-			 easing= "ease-in-out-circ"
-			 reapeat="indefine"></a-animation>
+			 <a-entity id="camera" position="0 0 0" camera look-controls></a-entity>
 
-			 <a-entity id="camera" position="0 0 0"
-                             camera look-controls></a-entity>
-		   <a-sky color="#030A24" animation="property: components.material.material.color;
+
+		   <a-sky finished;
+       color="#030A24" animation="property: components.material.material.color;
      		type: color;
-     		to: #65d2eb;
-      	dur: 5000;
+     		to: #030A24;
+      	dur: 50;
       	dir: alternate;
-      	loop: false"></a-sky>
+      	loop: false";
+        switch
+        >
+      </a-sky>
+
 			 <a-light type="point" intensity="100" color="#3498db" distance="3" position="1 2 -0.8"></a-light>
 			 <a-light type="point" intensity="10" color="red" distance="3" position="-1 0.2 -1"></a-light>
 			 <a-light type="point" intensity="20" color="orange" distance="3" position="0 1 0"></a-light>
 			 <a-entity light="type: ambient; color: #CBB"></a-entity>
 
-
     	</a-scene>
+
+      <script src= "animsky.js" ></script>
+
 
   </body>
 </html>

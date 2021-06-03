@@ -18,14 +18,14 @@ AFRAME.registerComponent('switch', {
 
       if (i<5) {
 
-        el.setAttribute("animation-mixer" , "repetitions : 2");
+        el.setAttribute("animation" ,);
 
         i++
         switch(i)
         {
-          case 1: el.setAttribute("scale", "2 2 2");
+          case 1: el.setAttribute("animation" , "to: #ff930f");
           break;
-          case 2: el.setAttribute("scale", "4 4 4");
+          case 2: el.setAttribute("animation-mixer" , "clip: pas_02");
           break;
           case 3: el.setAttribute("animation-mixer" , "clip: pas_03");
           break;
